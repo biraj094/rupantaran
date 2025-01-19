@@ -1,15 +1,17 @@
 # rupantaran
 
+This project aims to create a Python package to convert various Nepali specific measurements to SI or commonly used units. 
 
-This project aims to create a Python package to convert various Nepali specific measurements to SI units. 
 
-# Measurement metrics 
+
+# Measurement metrics categories:
 
 1. Land (khetmuri/bigha/kattha/dhur/ropani/aana/paisa/dam)
 2. Volume (mutthi/mana/pathi/dabba)
 3. Length  (angul/dharnugrah/dhanurmushti/vitastaa/haath/kosh/yojan)
 4. Weigth (dharni/Taul)
 5. Valuable Metals (lari/tola/pahadi)
+
 
 # Resources for conversion
 
@@ -22,3 +24,34 @@ This project aims to create a Python package to convert various Nepali specific 
 Cross reference each unit to see which one is most likely to be used.
 
 
+
+TOOLS 
+- pytest
+- sphinx
+- pip install sphinx-autobuild sphinx-rtd-theme
+
+
+
+
+
+# ENV Setup
+
+```python
+    conda activate env-rupantaran-dev
+    # For pytest to easily find your package, install rupantaran in editable mode. In the root of your project (the parent directory of rupantaran/), run:
+    pip install -e .
+    pytest
+```
+
+
+# To run the docs
+
+1. Navigate to <code>rupantaran/docs</code>
+2. Run <code>make html</code> to generate new docs files.
+3. Run <code>sphinx-autobuild . _build </code> to serve the docs in localhost.
+
+
+
+# FOR TEST 
+
+1. From root directory <code>pytest</code>
