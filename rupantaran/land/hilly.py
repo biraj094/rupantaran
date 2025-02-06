@@ -5,7 +5,7 @@ Functions for converting within the Hilly (Pahadi) land measurement system
 and between Hilly units and square meters.
 """
 
-from .constants import HILLY_TO_SQ_M
+from .constants import HILLY_TO_SQ_M, HILLY_CONVERSION_FACTORS
 
 def hilly_to_sq_meters(value: float, from_unit: str) -> float:
     """
@@ -65,30 +65,22 @@ def sq_meters_to_hilly(area_m2: float, to_unit: str) -> float:
     return area_m2 / HILLY_TO_SQ_M[unit_lower]
 
 
-def hilly_unit_to_hilly_unit(value: float, from_unit: str, to_unit: str) -> float:
+def hilly_to_hilly(value: float, from_unit: str, to_unit: str) -> float:
     """
-    Convert directly between any two Hilly units (ropani, aana, paisa, daam),
-    using square meters as an intermediary.
+    Convert directly between any two Hilly land units (ropani, aana, paisa, daam) using direct conversion factors.
 
     Args:
         value (float): The numeric amount in the from_unit.
-        from_unit (str): One of 'ropani', 'aana', 'paisa', 'daam'.
-        to_unit (str): One of 'ropani', 'aana', 'paisa', 'daam'.
+        from_unit (str): The source Hilly land unit ('ropani', 'aana', 'paisa', 'daam').
+        to_unit (str): The target Hilly land unit ('ropani', 'aana', 'paisa', 'daam').
 
     Returns:
-        float: The converted value in the to_unit.
+        float: The converted value in the target Hilly unit.
 
     Raises:
-        ValueError: If either the from_unit or the to_unit is not recognized.
-
-    Examples:
-        Convert 1 ropani to aanas:
-        >>> hilly_unit_to_hilly_unit(1, 'ropani', 'aana')
-        16.0
-
-        Convert 16 daams to paisas:
-        >>> hilly_unit_to_hilly_unit(16, 'daam', 'paisa')
-        8.0
+        ValueError: If the from_unit or to_unit is not a recognized Hilly unit.
     """
-    area_m2 = hilly_to_sq_meters(value, from_unit)
-    return sq_meters_to_hilly(area_m2, to_unit)
+    if from_unit not in HILLY_CONVERSION_FACTORS or to_unit not in HILLY_CONVERSION_FACTORS[from_unit]:
+        raise ValueError("Invalid Hilly land unit provided.")
+    
+    return value * HILLY_CONVERSION_FACTORS[from_unit][to_unit]

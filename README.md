@@ -42,7 +42,17 @@ TOOLS
     pip install -e .
     pytest
 ```
+conda activate env-rupantaran-stage >> For PYPI TEST SERVER
+conda activate env-rupantaran-prod >> For FINAL PUBLISHED PACKAGE
 
+- Things in this env 
+pip install build twine
+# build the package
+python -m build
+# Upload to test (API KEY NEEDED)
+twine upload --repository testpypi dist/*
+# final upload
+twine upload dist/*
 
 # To run the docs
 

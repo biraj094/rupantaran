@@ -5,7 +5,7 @@ Functions for converting within the Terai land measurement system
 and between Terai units and square meters.
 """
 
-from .constants import TERAI_TO_SQ_M
+from .constants import TERAI_TO_SQ_M, TERAI_CONVERSION_FACTORS
 
 def terai_to_sq_meters(value: float, from_unit: str) -> float:
     """
@@ -65,10 +65,9 @@ def sq_meters_to_terai(area_m2: float, to_unit: str) -> float:
     return area_m2 / TERAI_TO_SQ_M[unit_lower]
 
 
-def terai_unit_to_terai_unit(value: float, from_unit: str, to_unit: str) -> float:
+def terai_to_terai(value: float, from_unit: str, to_unit: str) -> float:
     """
-    Convert directly between any two Terai land units (bigha, kattha, dhur)
-    using square meters as an intermediary.
+    Convert directly between any two Terai land units (bigha, kattha, dhur) using direct conversion factors.
 
     Args:
         value (float): The numeric amount in the from_unit.
@@ -80,15 +79,8 @@ def terai_unit_to_terai_unit(value: float, from_unit: str, to_unit: str) -> floa
 
     Raises:
         ValueError: If the from_unit or to_unit is not a recognized Terai unit.
-
-    Examples:
-        Convert 1 bigha to katthas:
-        >>> terai_unit_to_terai_unit(1, 'bigha', 'kattha')
-        20.0
-
-        Convert 100 dhurs to bighas:
-        >>> terai_unit_to_terai_unit(100, 'dhur', 'bigha')
-        0.25
     """
-    area_m2 = terai_to_sq_meters(value, from_unit)
-    return sq_meters_to_terai(area_m2, to_unit)
+    if from_unit not in TERAI_CONVERSION_FACTORS or to_unit not in TERAI_CONVERSION_FACTORS[from_unit]:
+        raise ValueError("Invalid Terai land unit provided.")
+    
+    return value * TERAI_CONVERSION_FACTORS[from_unit][to_unit]
