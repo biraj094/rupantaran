@@ -7,6 +7,7 @@ and between Terai units and square meters, with configurable floating point prec
 
 from .constants import TERAI_TO_SQ_M, TERAI_CONVERSION_FACTORS
 
+
 def terai_to_sq_meters(value: float, from_unit: str, precision: int = 4) -> float:
     """
     Convert a value from a Terai land unit (bigha, kattha, dhur) to square meters.
@@ -24,12 +25,13 @@ def terai_to_sq_meters(value: float, from_unit: str, precision: int = 4) -> floa
     """
     if not isinstance(value, (int, float)):
         raise ValueError("Value must be a number.")
-    
+
     unit_lower = from_unit.lower()
     if unit_lower not in TERAI_TO_SQ_M:
         raise ValueError(f"Unsupported Terai unit: {from_unit}")
-    
+
     return round(value * TERAI_TO_SQ_M[unit_lower], precision)
+
 
 def sq_meters_to_terai(area_m2: float, to_unit: str, precision: int = 4) -> float:
     """
@@ -48,14 +50,17 @@ def sq_meters_to_terai(area_m2: float, to_unit: str, precision: int = 4) -> floa
     """
     if not isinstance(area_m2, (int, float)):
         raise ValueError("Area must be a number.")
-    
+
     unit_lower = to_unit.lower()
     if unit_lower not in TERAI_TO_SQ_M:
         raise ValueError(f"Unsupported Terai unit: {to_unit}")
-    
+
     return round(area_m2 / TERAI_TO_SQ_M[unit_lower], precision)
 
-def terai_to_terai(value: float, from_unit: str, to_unit: str, precision: int = 4) -> float:
+
+def terai_to_terai(
+    value: float, from_unit: str, to_unit: str, precision: int = 4
+) -> float:
     """
     Convert directly between any two Terai land units (bigha, kattha, dhur) using direct conversion factors.
 
@@ -73,8 +78,11 @@ def terai_to_terai(value: float, from_unit: str, to_unit: str, precision: int = 
     """
     if not isinstance(value, (int, float)):
         raise ValueError("Value must be a number.")
-    
-    if from_unit not in TERAI_CONVERSION_FACTORS or to_unit not in TERAI_CONVERSION_FACTORS[from_unit]:
+
+    if (
+        from_unit not in TERAI_CONVERSION_FACTORS
+        or to_unit not in TERAI_CONVERSION_FACTORS[from_unit]
+    ):
         raise ValueError("Invalid Terai land unit provided.")
-    
+
     return round(value * TERAI_CONVERSION_FACTORS[from_unit][to_unit], precision)

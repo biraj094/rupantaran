@@ -7,6 +7,7 @@ and between Hilly units and square meters.
 
 from .constants import HILLY_TO_SQ_M, HILLY_CONVERSION_FACTORS
 
+
 def hilly_to_sq_meters(value: float, from_unit: str, precision: int = 4) -> float:
     """
     Convert a value from a Hilly land unit (ropani, aana, paisa, daam) to square meters.
@@ -33,11 +34,11 @@ def hilly_to_sq_meters(value: float, from_unit: str, precision: int = 4) -> floa
     """
     if not isinstance(value, (int, float)):
         raise ValueError("Input value must be a number.")
-    
+
     unit_lower = from_unit.lower()
     if unit_lower not in HILLY_TO_SQ_M:
         raise ValueError(f"Unsupported Hilly unit: {from_unit}")
-    
+
     return round(value * HILLY_TO_SQ_M[unit_lower], precision)
 
 
@@ -67,15 +68,17 @@ def sq_meters_to_hilly(area_m2: float, to_unit: str, precision: int = 4) -> floa
     """
     if not isinstance(area_m2, (int, float)):
         raise ValueError("Input area must be a number.")
-    
+
     unit_lower = to_unit.lower()
     if unit_lower not in HILLY_TO_SQ_M:
         raise ValueError(f"Unsupported Hilly unit: {to_unit}")
-    
+
     return round(area_m2 / HILLY_TO_SQ_M[unit_lower], precision)
 
 
-def hilly_to_hilly(value: float, from_unit: str, to_unit: str, precision: int = 4) -> float:
+def hilly_to_hilly(
+    value: float, from_unit: str, to_unit: str, precision: int = 4
+) -> float:
     """
     Convert directly between any two Hilly land units (ropani, aana, paisa, daam) using direct conversion factors.
 
@@ -102,8 +105,11 @@ def hilly_to_hilly(value: float, from_unit: str, to_unit: str, precision: int = 
     """
     if not isinstance(value, (int, float)):
         raise ValueError("Input value must be a number.")
-    
-    if from_unit not in HILLY_CONVERSION_FACTORS or to_unit not in HILLY_CONVERSION_FACTORS[from_unit]:
+
+    if (
+        from_unit not in HILLY_CONVERSION_FACTORS
+        or to_unit not in HILLY_CONVERSION_FACTORS[from_unit]
+    ):
         raise ValueError("Invalid Hilly land unit provided.")
-    
+
     return round(value * HILLY_CONVERSION_FACTORS[from_unit][to_unit], precision)

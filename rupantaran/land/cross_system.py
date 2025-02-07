@@ -8,7 +8,10 @@ by leveraging square meters as the common intermediary.
 from .terai import terai_to_sq_meters, sq_meters_to_terai
 from .hilly import hilly_to_sq_meters, sq_meters_to_hilly
 
-def terai_to_hilly(value: float, from_unit: str, to_unit: str, precision: int = 4) -> float:
+
+def terai_to_hilly(
+    value: float, from_unit: str, to_unit: str, precision: int = 4
+) -> float:
     """
     Convert from a Terai unit (bigha, kattha, dhur) to a Hilly unit
     (ropani, aana, paisa, daam).
@@ -43,7 +46,9 @@ def terai_to_hilly(value: float, from_unit: str, to_unit: str, precision: int = 
     return round(sq_meters_to_hilly(area_m2, to_unit), precision)
 
 
-def hilly_to_terai(value: float, from_unit: str, to_unit: str, precision: int = 4) -> float:
+def hilly_to_terai(
+    value: float, from_unit: str, to_unit: str, precision: int = 4
+) -> float:
     """
     Convert from a Hilly unit (ropani, aana, paisa, daam) to a Terai unit
     (bigha, kattha, dhur).

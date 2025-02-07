@@ -9,8 +9,7 @@ back into "mixed" expressions. Includes cross-system "mixed" conversions.
 from .terai import terai_to_sq_meters
 from .hilly import hilly_to_sq_meters
 from .constants import TERAI_TO_SQ_M, HILLY_TO_SQ_M
-from .terai import sq_meters_to_terai
-from .hilly import sq_meters_to_hilly
+
 
 def parse_terai_mixed_unit(expression: str) -> float:
     """
@@ -42,9 +41,10 @@ def parse_terai_mixed_unit(expression: str) -> float:
             val = float(val_str)
         except ValueError:
             raise ValueError(f"Invalid numeric value '{val_str}' in '{expression}'")
-        
+
         total_m2 += terai_to_sq_meters(val, unit_str)
     return total_m2
+
 
 def parse_hilly_mixed_unit(expression: str) -> float:
     """
@@ -80,6 +80,7 @@ def parse_hilly_mixed_unit(expression: str) -> float:
         total_m2 += hilly_to_sq_meters(val, unit_str)
     return total_m2
 
+
 def sq_meters_to_terai_mixed(area_m2: float, precision: int = 4) -> str:
     """
     Convert an area in square meters into a 'mixed' Terai format:
@@ -110,6 +111,7 @@ def sq_meters_to_terai_mixed(area_m2: float, precision: int = 4) -> str:
 
     return f"{bigha} bigha {kattha} kattha {dhur:.{precision}f} dhur"
 
+
 def hilly_mixed_to_terai_mixed(expression: str, precision: int = 4) -> str:
     """
     Convert a Hilly mixed expression into a Terai mixed expression.
@@ -127,3 +129,64 @@ def hilly_mixed_to_terai_mixed(expression: str, precision: int = 4) -> str:
     """
     area_m2 = parse_hilly_mixed_unit(expression)
     return sq_meters_to_terai_mixed(area_m2, precision)
+
+
+def sq_meters_to_hilly_mixed(area_m2: float, precision: int = 4) -> str:
+    """
+    Convert an area in square meters into a 'mixed' Hilly format:
+    e.g. 'X ropani Y aana Z paisa W daam'.
+
+    Args:
+        area_m2 (float): Area in square meters.
+        precision (int, optional): Floating point precision for daam. Defaults to 4.
+
+    Returns:
+        str: Formatted string in ropani/aana/paisa/daam.
+
+    Examples:
+        >>> sq_meters_to_hilly_mixed(1082.55)
+        '2 ropani 3 aana 2 paisa 0.0000 daam'
+
+        >>> sq_meters_to_hilly_mixed(522.5, precision=2)
+        '1 ropani 0 aana 5 paisa 0.00 daam'
+    """
+    ROPANI_M2 = HILLY_TO_SQ_M["ropani"]
+    AANA_M2 = HILLY_TO_SQ_M["aana"]
+    PAISA_M2 = HILLY_TO_SQ_M["paisa"]
+    DAAM_M2 = HILLY_TO_SQ_M["daam"]
+
+    ropani = int(area_m2 // ROPANI_M2)
+    remainder = area_m2 % ROPANI_M2
+
+    aana = int(remainder // AANA_M2)
+    remainder = remainder % AANA_M2
+
+    paisa = int(remainder // PAISA_M2)
+    remainder = remainder % PAISA_M2
+
+    daam = round(remainder / DAAM_M2, precision)
+
+    return f"{ropani} ropani {aana} aana {paisa} paisa {daam:.{precision}f} daam"
+
+
+def terai_mixed_to_hilly_mixed(expression: str, precision: int = 4) -> str:
+    """
+    Convert a Terai mixed expression (e.g. '1 bigha 5 kattha 10 dhur')
+    into a Hilly mixed expression (e.g. 'X ropani Y aana Z paisa W daam').
+
+    Args:
+        expression (str): A Terai mixed string.
+        precision (int, optional): Floating point precision for daam. Defaults to 4.
+
+    Returns:
+        str: A Hilly mixed string.
+
+    Examples:
+        >>> terai_mixed_to_hilly_mixed('1 bigha 5 kattha 10 dhur')
+        '2 ropani 6 aana 2 paisa 0.0000 daam'
+
+        >>> terai_mixed_to_hilly_mixed('2 bigha 10 dhur', precision=2)
+        '5 ropani 1 aana 1 paisa 0.00 daam'
+    """
+    area_m2 = parse_terai_mixed_unit(expression)
+    return sq_meters_to_hilly_mixed(area_m2, precision)
