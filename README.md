@@ -121,6 +121,23 @@ This environment is used for **publishing the final package to PyPI**.
 
 ---
 
+## Documentation 
+
+1. Navigate to directory
+    ```
+    cd rupantaran/docs
+    ```
+2. Generate the docs
+    ```
+    make html
+    ```
+3. Serve the docs in localhost
+    ```
+    sphinx-autobuild . _build 
+    ```
+
+---
+
 ## 🛠 Additional Notes
 
 - Always **test the package in the staging environment** before publishing to production.
