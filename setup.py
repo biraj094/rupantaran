@@ -6,7 +6,7 @@ long_description = (HERE / "README.md").read_text()
 
 setup(
     name="rupantaran",
-    version="0.2.4",
+    version="0.2.5",
     packages=find_packages(),
     license="MIT",
     description="Rupantaran converts Nepali-specific measurements into SI or metric units.",
