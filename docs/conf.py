@@ -34,6 +34,7 @@ html_static_path = ['_static']
 
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx_copybutton',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon'  # if you like Google/NumPy style docstrings
 ]
