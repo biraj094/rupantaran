@@ -16,7 +16,7 @@ setup(
     author_email="koiralabiraj@gmail.com",
     url="https://github.com/biraj094/rupantaran",
     project_urls={  # Additional links
-        "Documentation": "https://rupantaran.github.io/",
+        "Documentation": "https://rupantaran.readthedocs.io/en/latest/",
         "Source Code": "https://github.com/biraj094/rupantaran",
         "Bug Tracker": "https://github.com/biraj094/rupantaran/issues",
     },
