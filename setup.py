@@ -6,7 +6,7 @@ long_description = (HERE / "README.md").read_text()
 
 setup(
     name="rupantaran",
-    version="0.2.5",
+    version="0.2.6",
     packages=find_packages(),
     license="MIT",
     description="Rupantaran converts Nepali-specific measurements into SI or metric units.",
@@ -16,7 +16,7 @@ setup(
     author_email="koiralabiraj@gmail.com",
     url="https://github.com/biraj094/rupantaran",
     project_urls={  # Additional links
-        "Documentation": "https://rupantaran.github.io/",
+        "Documentation": "https://rupantaran.readthedocs.io/en/latest/",
         "Source Code": "https://github.com/biraj094/rupantaran",
         "Bug Tracker": "https://github.com/biraj094/rupantaran/issues",
     },
