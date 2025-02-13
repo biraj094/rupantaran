@@ -1,0 +1,15 @@
+[build]
+  base = "rupantaran"  # Set the base directory to 'rupantaran'
+  command = "pip install -r requirements.txt && sphinx-build -b html docs/ docs/_build/html"
+  publish = "rupantaran/docs/_build/html"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "18"  # Set Node.js version if needed
+  PYTHON_VERSION = "3.9"  # Ensure the correct Python version
+
+[context.production]
+  deploy_log_visibility = "public"
+
+[context.deploy-preview]
+  build_status = "active"
