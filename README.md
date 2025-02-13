@@ -3,8 +3,8 @@
 
 <!-- [![PyPI](https://img.shields.io/pypi/v/rupantaran)](https://pypi.org/project/rupantaran/)  
 [![TestPyPI](https://img.shields.io/badge/TestPyPI-Testing-blue)](https://test.pypi.org/project/rupantaran/)   -->
-<!-- [![License](https://img.shields.io/github/license/yourusername/rupantaran)](LICENSE) -->
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![codecov](https://codecov.io/gh/biraj094/rupantaran/graph/badge.svg?token=FQRYN84524)](https://codecov.io/gh/biraj094/rupantaran)
 **Rupantaran** is a Python package that converts various **Nepali-specific measurements** into **SI units** or commonly used metric units.  You can read the docs [here](https://rupantaran.readthedocs.io/en/latest/).
 
 ---
