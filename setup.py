@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="rupantaran",
-    version="0.1.0",
+    version="0.2.1",
     packages=find_packages(),
     license="MIT",
     description="Rupantaran is a Python package that converts various Nepali-specific measurements into SI units or commonly used metric units.",
