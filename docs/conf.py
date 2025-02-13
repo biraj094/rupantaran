@@ -8,6 +8,7 @@
 
 import os
 import sys
+import sphinx_rtd_theme
 
 # If your package (rupantaran) is one level up from docs/
 sys.path.insert(0, os.path.abspath('..'))
@@ -29,6 +30,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = "sphinx_rtd_theme"
 # html_theme = 'alabaster'
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 html_static_path = ['_static']
 
