@@ -40,7 +40,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         run: |
           PACKAGE_NAME=$(python setup.py --name)
-          RESPONSE=$(curl -s https://test.pypi.org/pypi/$PACKAGE_NAME/json || echo "{}")
+          RESPONSE=$(curl -s https://test.pypi.org/pypi/$PACKAGE_NAME/json) || RESPONSE="{}"
           EXISTING_VERSION=$(echo $RESPONSE | python -c "import sys, json; print(json.loads(sys.stdin.read()).get('info', {}).get('version', '0.0.0'))")
           echo "Existing TestPyPI version: $EXISTING_VERSION"
           if [ "$(python -c 'from packaging.version import parse; print(parse("'$PACKAGE_VERSION'") > parse("'$EXISTING_VERSION'"))')" == "False" ]; then
