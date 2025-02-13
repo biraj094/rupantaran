@@ -1,0 +1,61 @@
+name: Deploy to TestPyPI
+
+on:
+  push:
+    tags:
+      - "v*"  # Runs only when a version tag is pushed
+    branches:
+      - feature  # Ensure it only runs on the 'feature' branch
+
+jobs:
+  build-and-publish-testpypi:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine packaging requests
+
+      - name: Get Package Version from Tag
+        id: get_version
+        run: |
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}  # Extract version from tag
+          echo "PACKAGE_VERSION=$TAG_VERSION" >> $GITHUB_ENV
+          echo "Detected tag version: $TAG_VERSION"
+
+      - name: Check Existing Version on TestPyPI
+        run: |
+          PACKAGE_NAME=$(python setup.py --name)
+          RESPONSE=$(curl -s https://test.pypi.org/pypi/$PACKAGE_NAME/json) || RESPONSE="{}"
+          EXISTING_VERSION=$(echo $RESPONSE | python -c "import sys, json; print(json.loads(sys.stdin.read()).get('info', {}).get('version', '0.0.0'))")
+          
+          echo "Existing TestPyPI version: $EXISTING_VERSION"
+          echo "Tag version: $PACKAGE_VERSION"
+
+          if [ "$(python -c 'from packaging.version import parse; print(parse("'$PACKAGE_VERSION'") > parse("'$EXISTING_VERSION'"))')" == "False" ]; then
+            echo "Version $PACKAGE_VERSION is not greater than $EXISTING_VERSION. Skipping upload to TestPyPI."
+            exit 1
+          fi
+
+      - name: Build package
+        run: |
+          rm -rf dist/
+          python -m build
+
+      - name: Check package validity
+        run: twine check dist/*
+
+      - name: Publish to TestPyPI
+        run: twine upload --repository testpypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_API_TOKEN }}
