@@ -1,0 +1,26 @@
+{
+  "name": "rupantaran",
+  "version": "1.0.0",
+  "description": "<!-- [![PyPI](https://img.shields.io/pypi/v/rupantaran)](https://pypi.org/project/rupantaran/)   [![TestPyPI](https://img.shields.io/badge/TestPyPI-Testing-blue)](https://test.pypi.org/project/rupantaran/)   --> <!-- [![License](https://img.shields.io/github/license/yourusername/rupantaran)](LICENSE) -->",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biraj094/rupantaran.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biraj094/rupantaran/issues"
+  },
+  "homepage": "https://github.com/biraj094/rupantaran#readme",
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}
