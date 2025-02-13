@@ -1,4 +1,4 @@
-name: Deploy Documentation to GitHub Pages
+name: Deploy Sphinx Docs to GitHub Pages
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
   id-token: write
 
 jobs:
-  deploy-docs:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,20 +28,21 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mkdocs-material  # Replace with your doc generator if different
+          pip install sphinx sphinx-rtd-theme
 
-      - name: Build documentation
+      - name: Build Sphinx documentation
         run: |
-          mkdocs build
+          cd docs
+          make html
 
-      - name: Deploy to GitHub Pages
-        uses: actions/upload-pages-artifact@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4  # ✅ Updated to v4
         with:
-          path: site  # The output folder of mkdocs build
+          path: docs/_build/html  # The output folder of Sphinx build
 
-  publish:
-    needs: deploy-docs
+  deploy:
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy GitHub Pages
-        uses: actions/deploy-pages@v2
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4  # ✅ Updated to v4
