@@ -5,6 +5,10 @@ from rupantaran.weight import (
     from_lal, from_tola, from_chatak, 
     from_pau, from_dharni, from_sher
 )
+from rupantaran.weight.constants import (
+    LAL_TO, TOLA_TO, CHATAK_TO, PAU_TO, DHARNI_TO, 
+    SHER_TO, KG_TO, G_TO, LB_TO, OZ_TO
+)
 
 WEIGHT_UNITS = ["lal","tola","chatak","pau","dharni","sher","kg","g","lb","oz"]
 
@@ -94,3 +98,32 @@ def test_specific_conversions():
         result = func(input_val, unit, precision=3)  # Set fixed precision for all tests
         assert result == pytest.approx(expected, rel=1e-1), \
             f"\nFunction: {func.__name__}\nInput: {input_val} {unit}\nExpected: {expected}\nGot: {result}"
+
+def test_conversion_constants_consistency():
+    """Test that conversion constants are consistent across dictionaries"""
+    # Dictionary mapping unit names to their conversion dictionaries
+    conversion_dicts = {
+        "lal": LAL_TO,
+        "tola": TOLA_TO,
+        "chatak": CHATAK_TO,
+        "pau": PAU_TO,
+        "dharni": DHARNI_TO,
+        "sher": SHER_TO,
+        "kg": KG_TO,
+        "g": G_TO,
+        "lb": LB_TO,
+        "oz": OZ_TO
+    }
+    
+    # Test bidirectional consistency for each pair of units
+    for unit1, dict1 in conversion_dicts.items():
+        for unit2, forward_value in dict1.items():
+            # Get the reverse conversion value
+            reverse_value = conversion_dicts[unit2][unit1]
+            
+            # The product of forward and reverse conversions should be approximately 1
+            product = forward_value * reverse_value
+            assert 0.85 <= product <= 1.15, \
+                f"Inconsistent conversion between {unit1} and {unit2}: " \
+                f"{unit1}->{unit2}={forward_value}, {unit2}->{unit1}={reverse_value}, " \
+                f"product={product} (should be between 0.85 and 1.15)"

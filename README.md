@@ -5,6 +5,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/biraj094/rupantaran/graph/badge.svg?token=FQRYN84524)](https://codecov.io/gh/biraj094/rupantaran)
 
+[![Deployment-PyPiProd](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-PyPiProd.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-PyPiProd.yml)
+[![Deployment-testPyPi](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-testPyPi.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-testPyPi.yml)
+[![Deploy-docs](https://github.com/biraj094/rupantaran/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/deploy-docs.yml)
+
 **Rupantaran** is a Python package that converts various **Nepali-specific measurements** into **SI units** or commonly used metric units.  You can read the docs [here](https://rupantaran.readthedocs.io/en/latest/).
 
 ---
@@ -16,9 +20,9 @@ This package covers a range of traditional Nepalese measurement units, including
 - [X] **Land**: <del>khetmuri</del>, bigha, kattha, dhur, ropani, aana, paisa, dam , square meter  
 - [ ] **Volume**: mutthi, mana, pathi, dabba  
 - [ ] **Length**: angul, dharnugrah, dhanurmushti, vitastaa, haath, kosh, yojan  
-- [ ] **Weight**: lal, tola, chatak, pau, dharni, sher, kg, g, lb, oz  
+- [X] **Weight**: lal, tola, chatak, pau, dharni, sher, kg, g, lb, oz  
 
-The package ensures accurate conversions by cross-referencing multiple resources. Please create an issue if you find any discrepancies in conversion maps.  
+The package ensures accurate conversions by cross-referencing multiple resources. Please create an issue if you find any discrepancies in conversion maps. [This](https://docs.google.com/spreadsheets/d/1Y_XrdH4gqVXVI-ek8ZDeLZxoGFjHQYAhC8UeeU8hT5w/edit?usp=sharing) sheet contains the conversion maps for the weight unit. Also, please let create an issue if you find any updated conversion maps.
 
 ---
 
@@ -134,6 +138,8 @@ This environment is used for publishing the final package to PyPI.This is facila
 
 ## Documentation 
 
+The documentation is built with [Sphinx](https://www.sphinx-doc.org/en/master/) and [Read the Docs](https://readthedocs.org/). The documentation is stored in the `docs/` directory. This is facilitated with [GitHub Actions workflow](.github/workflows/deploy-docs.yml). This workflow checks if there are any changes in the `docs/` directory and if so, it builds the documentation .
+
 1. Navigate to directory
     ```
     cd rupantaran/docs
@@ -148,6 +154,23 @@ This environment is used for publishing the final package to PyPI.This is facila
     ```
 
 ---
+
+## Testing
+
+Some useful commands for testing the package:
+
+```
+# Check the coverage of the all files
+pytest --cov=rupantaran  --cov-report=term-missing 
+# Run the tests for a specific keyword
+pytest -k "hill"  
+# Generate the coverage report in html format
+pytest --cov=rupantaran  --cov-report=html   
+
+```
+
+   
+
 
 ## 🛠 Additional Notes
 
@@ -164,7 +187,8 @@ This environment is used for publishing the final package to PyPI.This is facila
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
+---
+ 
 
 
 
