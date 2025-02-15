@@ -36,16 +36,17 @@ The package ensures accurate conversions by cross-referencing multiple resources
 
 **This document provides a step-by-step guide to setting up the development and production environments for the **rupantaran** package.**
 
+### 📌 Development Environment 
+
+This environment is used for publishing the package to TestPyPI, PyPI's testing server. This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-testPyPi.yml). The TestPyPI link for rupantaran is [here](https://test.pypi.org/project/rupantaran/).
+
+
 <details>
-  <summary>📌 Development Environment 
-  <br>
-   This environment is used for publishing the package to TestPyPI, PyPI's testing server. 
+  <summary>
+  Expand for more details for the development environment
   </summary> 
 
-<br>
-This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-testPyPi.yml). The TestPyPI link for rupantaran is [here](https://test.pypi.org/project/rupantaran/).
-
-<br>
+---
 
 <blockquote>
    <b>Note:</b> The GitHub Actions workflow is configured to run automatically when a new tag is pushed to the repository. This ensures that the package is always built and uploaded to TestPyPI when a new version is released.
@@ -99,21 +100,21 @@ git push origin v0.2.2
    ```
 </details>
 
+### 📌 Production Environment  
+
+This environment is used for publishing the final package to PyPI.This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-PyPi.yml). The PyPI link for rupantaran is [here](https://pypi.org/project/rupantaran/).
+
 <details>
-  <summary>📌 Production Environment 
-    <br>
-    This environment is used for publishing the final package to PyPI.
+  <summary>
+  Expand for more details for the production environment
   </summary>
 
-<br>
-This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-PyPi.yml). The PyPI link for rupantaran is [here](https://pypi.org/project/rupantaran/).
+---
 
-<br>
 <blockquote>
    <b>Note:</b> The Github Action workflow is configured to push the package to PyPI when a PR is merged into the main branch. 
 </blockquote>
 
-<br>
 
 #### ✅ Steps to Set Up the Production Environment:
 
