@@ -4,6 +4,7 @@
 [![TestPyPI](https://img.shields.io/badge/TestPyPI-Testing-blue)](https://test.pypi.org/project/rupantaran/)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/biraj094/rupantaran/graph/badge.svg?token=FQRYN84524)](https://codecov.io/gh/biraj094/rupantaran)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/biraj094/rupantaran/badge)](https://scorecard.dev/viewer/?uri=github.com/biraj094/rupantaran)
 [![Deployment-PyPiProd](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-PyPiProd.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-PyPiProd.yml)
 [![Deployment-testPyPi](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-testPyPi.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-testPyPi.yml)
 [![Deploy-docs](https://github.com/biraj094/rupantaran/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/deploy-docs.yml)
