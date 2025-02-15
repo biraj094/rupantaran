@@ -1,4 +1,3 @@
-
 # Rupantaran
 
 <!-- [![PyPI](https://img.shields.io/pypi/v/rupantaran)](https://pypi.org/project/rupantaran/)  
@@ -35,12 +34,34 @@ The package ensures accurate conversions by cross-referencing multiple resources
 
 ## Environment Setup Guide for Rupantaran
 
-This document provides a step-by-step guide to setting up the development, staging, and production environments for the **rupantaran** package.
+**This document provides a step-by-step guide to setting up the development and production environments for the **rupantaran** package.**
 
+<details>
+  <summary>📌 Development Environment 
+  <br>
+   This environment is used for publishing the package to TestPyPI, PyPI's testing server. 
+  </summary> 
 
-### 📌 1. Development Environment (dev)
+<br>
+This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-testPyPi.yml). The TestPyPI link for rupantaran is [here](https://test.pypi.org/project/rupantaran/).
 
-This environment is used **only for local testing**. **Do not upload anything from dev to PyPI.**
+<br>
+
+<blockquote>
+   <b>Note:</b> The GitHub Actions workflow is configured to run automatically when a new tag is pushed to the repository. This ensures that the package is always built and uploaded to TestPyPI when a new version is released.
+</blockquote>
+
+<br>
+
+```python
+# Always create a tag after the version_id is updated in the setup.py file.
+# Create a new tag
+git tag v0.2.2
+# Push the tag to the repository
+git push origin v0.2.2
+```
+
+<br>
 
 #### ✅ Steps to Set Up the Development Environment:
 
@@ -49,38 +70,15 @@ This environment is used **only for local testing**. **Do not upload anything fr
    conda activate env-rupantaran-dev
    ```
 
-2. **Install the package in editable mode:**
-   ```sh
-   pip install -e .
-   ```
-   - This allows you to make changes to the package and test them without reinstalling it.
-
-3. **Run tests to verify installation:**
-   ```sh
-   pytest
-   ```
-
----
-
-### 📌 2. Staging Environment (stage) → TestPyPI
-
-This environment is used for **publishing the package to TestPyPI**, PyPI's testing server.
-
-#### ✅ Steps to Set Up the Staging Environment:
-
-1. **Activate the staging environment:**
-   ```sh
-   conda activate env-rupantaran-stage
-   ```
-
 2. **Install required dependencies for building and uploading the package:**
    ```sh
    pip install build twine
    ```
 
-3. **Build the package:**
+3. **Build the package and install it in editable mode:**
    ```sh
    python -m build
+   pip install -e .
    ```
    - This generates the `dist/` directory containing `.tar.gz` and `.whl` files.
 
@@ -99,12 +97,23 @@ This environment is used for **publishing the package to TestPyPI**, PyPI's test
    ```sh
    pytest --pyargs rupantaran
    ```
+</details>
 
----
+<details>
+  <summary>📌 Production Environment 
+    <br>
+    This environment is used for publishing the final package to PyPI.
+  </summary>
 
-### 📌 3. Production Environment (prod) → Final PyPI Upload
+<br>
+This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-PyPi.yml). The PyPI link for rupantaran is [here](https://pypi.org/project/rupantaran/).
 
-This environment is used for **publishing the final package to PyPI**.
+<br>
+<blockquote>
+   <b>Note:</b> The Github Action workflow is configured to push the package to PyPI when a PR is merged into the main branch. 
+</blockquote>
+
+<br>
 
 #### ✅ Steps to Set Up the Production Environment:
 
@@ -118,6 +127,7 @@ This environment is used for **publishing the final package to PyPI**.
    twine upload dist/*
    ```
    - This makes the package available on the **official PyPI repository**.
+</details>
 
 ---
 
