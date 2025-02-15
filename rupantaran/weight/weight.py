@@ -6,6 +6,7 @@ from .constants import (LAL_TO, TOLA_TO, CHATAK_TO, PAU_TO, DHARNI_TO,
 def weight_converter(conversion_map: dict) -> Callable:
     """Decorator that creates a weight conversion function using the provided conversion map."""
     def decorator(func: Callable) -> Callable:
+        # @wraps(func) keeps the function’s original name and docstring intact.
         @wraps(func)
         def wrapper(value: float, to_unit: str, precision: int = 4) -> float:
             if not isinstance(value, (int, float)):
