@@ -102,7 +102,7 @@ git push origin v0.2.2
 
 ### 📌 Production Environment  
 
-This environment is used for publishing the final package to PyPI.This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-PyPi.yml). The PyPI link for rupantaran is [here](https://pypi.org/project/rupantaran/).
+This environment is used for publishing the final package to PyPI.This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-PyPiProd.yml). The PyPI link for rupantaran is [here](https://pypi.org/project/rupantaran/).
 
 <details>
   <summary>
