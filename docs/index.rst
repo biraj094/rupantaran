@@ -1,12 +1,12 @@
 .. rupantaran documentation master file
 
 Rupantaran Documentation
-=======================
+=============================
 
 Welcome to Rupantaran's documentation. Rupantaran is a Python package that converts various Nepali-specific measurements into SI units or commonly used metric units.
 
 Quick Start
-----------
+==================
 
 .. code-block:: bash
 
@@ -17,11 +17,11 @@ Installation
 ===========
 
 Requirements
------------
+==================
 - Python 3.7+
 
 Installation Steps 
-----------------
+========================
 
 1. Using pip:
    
@@ -38,16 +38,15 @@ Installation Steps
       pip install -e .
 
 
-
 Modules
--------
+===============
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
-   api/land
+   land
+   weight
 
 
 Indices and tables

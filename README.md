@@ -1,10 +1,10 @@
-
 # Rupantaran
 
-<!-- [![PyPI](https://img.shields.io/pypi/v/rupantaran)](https://pypi.org/project/rupantaran/)  
-[![TestPyPI](https://img.shields.io/badge/TestPyPI-Testing-blue)](https://test.pypi.org/project/rupantaran/)   -->
+[![PyPI](https://img.shields.io/pypi/v/rupantaran)](https://pypi.org/project/rupantaran/)  
+[![TestPyPI](https://img.shields.io/badge/TestPyPI-Testing-blue)](https://test.pypi.org/project/rupantaran/)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/biraj094/rupantaran/graph/badge.svg?token=FQRYN84524)](https://codecov.io/gh/biraj094/rupantaran)
+
 **Rupantaran** is a Python package that converts various **Nepali-specific measurements** into **SI units** or commonly used metric units.  You can read the docs [here](https://rupantaran.readthedocs.io/en/latest/).
 
 ---
@@ -13,13 +13,12 @@
 
 This package covers a range of traditional Nepalese measurement units, including:
 
-- [X] **Land**: <del>khetmuri</del>, bigha, kattha, dhur, ropani, aana, paisa, dam  
+- [X] **Land**: <del>khetmuri</del>, bigha, kattha, dhur, ropani, aana, paisa, dam , square meter  
 - [ ] **Volume**: mutthi, mana, pathi, dabba  
 - [ ] **Length**: angul, dharnugrah, dhanurmushti, vitastaa, haath, kosh, yojan  
-- [ ] **Weight**: dharni, Taul  
-- [ ] **Valuable Metals**: lari, tola, pahadi  
+- [ ] **Weight**: lal, tola, chatak, pau, dharni, sher, kg, g, lb, oz  
 
-The package ensures accurate conversions by cross-referencing multiple resources.  
+The package ensures accurate conversions by cross-referencing multiple resources. Please create an issue if you find any discrepancies in conversion maps.  
 
 ---
 
@@ -35,12 +34,35 @@ The package ensures accurate conversions by cross-referencing multiple resources
 
 ## Environment Setup Guide for Rupantaran
 
-This document provides a step-by-step guide to setting up the development, staging, and production environments for the **rupantaran** package.
+**This document provides a step-by-step guide to setting up the development and production environments for the **rupantaran** package.**
+
+### 📌 Development Environment 
+
+This environment is used for publishing the package to TestPyPI, PyPI's testing server. This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-testPyPi.yml). The TestPyPI link for rupantaran is [here](https://test.pypi.org/project/rupantaran/).
 
 
-### 📌 1. Development Environment (dev)
+<details>
+  <summary>
+  Expand for more details for the development environment
+  </summary> 
 
-This environment is used **only for local testing**. **Do not upload anything from dev to PyPI.**
+---
+
+<blockquote>
+   <b>Note:</b> The GitHub Actions workflow is configured to run automatically when a new tag is pushed to the repository. This ensures that the package is always built and uploaded to TestPyPI when a new version is released.
+</blockquote>
+
+<br>
+
+```python
+# Always create a tag after the version_id is updated in the setup.py file.
+# Create a new tag
+git tag v0.2.2
+# Push the tag to the repository
+git push origin v0.2.2
+```
+
+<br>
 
 #### ✅ Steps to Set Up the Development Environment:
 
@@ -49,38 +71,15 @@ This environment is used **only for local testing**. **Do not upload anything fr
    conda activate env-rupantaran-dev
    ```
 
-2. **Install the package in editable mode:**
-   ```sh
-   pip install -e .
-   ```
-   - This allows you to make changes to the package and test them without reinstalling it.
-
-3. **Run tests to verify installation:**
-   ```sh
-   pytest
-   ```
-
----
-
-### 📌 2. Staging Environment (stage) → TestPyPI
-
-This environment is used for **publishing the package to TestPyPI**, PyPI's testing server.
-
-#### ✅ Steps to Set Up the Staging Environment:
-
-1. **Activate the staging environment:**
-   ```sh
-   conda activate env-rupantaran-stage
-   ```
-
 2. **Install required dependencies for building and uploading the package:**
    ```sh
    pip install build twine
    ```
 
-3. **Build the package:**
+3. **Build the package and install it in editable mode:**
    ```sh
    python -m build
+   pip install -e .
    ```
    - This generates the `dist/` directory containing `.tar.gz` and `.whl` files.
 
@@ -99,12 +98,23 @@ This environment is used for **publishing the package to TestPyPI**, PyPI's test
    ```sh
    pytest --pyargs rupantaran
    ```
+</details>
+
+### 📌 Production Environment  
+
+This environment is used for publishing the final package to PyPI.This is facilated with [GitHub Actions workflow](.github/workflows/Deployment-PyPiProd.yml). The PyPI link for rupantaran is [here](https://pypi.org/project/rupantaran/).
+
+<details>
+  <summary>
+  Expand for more details for the production environment
+  </summary>
 
 ---
 
-### 📌 3. Production Environment (prod) → Final PyPI Upload
+<blockquote>
+   <b>Note:</b> The Github Action workflow is configured to push the package to PyPI when a PR is merged into the main branch. 
+</blockquote>
 
-This environment is used for **publishing the final package to PyPI**.
 
 #### ✅ Steps to Set Up the Production Environment:
 
@@ -118,6 +128,7 @@ This environment is used for **publishing the final package to PyPI**.
    twine upload dist/*
    ```
    - This makes the package available on the **official PyPI repository**.
+</details>
 
 ---
 
@@ -145,7 +156,7 @@ This environment is used for **publishing the final package to PyPI**.
   ```sh
   rm -rf dist/
   ```
-- If you face authentication issues, regenerate the **API token** from TestPyPI or PyPI and update your `~/.pypirc` file.
+- If you face authentication issues, regenerate the **API token** from TestPyPI or PyPI and update your `~/.pypirc` file. This is not relevant here, because we are using GitHub Actions to upload the package to TestPyPI and PyPI.
 
 ---
 
