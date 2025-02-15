@@ -9,6 +9,12 @@
 [![Deployment-testPyPi](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-testPyPi.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/Deployment-testPyPi.yml)
 [![Deploy-docs](https://github.com/biraj094/rupantaran/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/biraj094/rupantaran/actions/workflows/deploy-docs.yml)
 
+---
+
+<p align="center">
+  <img src="rupantaran.png" alt="Rupantaran Logo" width="200" height="200">
+</p>
+
 **Rupantaran** is a Python package that converts various **Nepali-specific measurements** into **SI units** or commonly used metric units.  You can read the docs [here](https://rupantaran.readthedocs.io/en/latest/).
 
 ---
