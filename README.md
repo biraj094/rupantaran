@@ -1,9 +1,10 @@
 # Rupantaran
 
-<!-- [![PyPI](https://img.shields.io/pypi/v/rupantaran)](https://pypi.org/project/rupantaran/)  
-[![TestPyPI](https://img.shields.io/badge/TestPyPI-Testing-blue)](https://test.pypi.org/project/rupantaran/)   -->
+[![PyPI](https://img.shields.io/pypi/v/rupantaran)](https://pypi.org/project/rupantaran/)  
+[![TestPyPI](https://img.shields.io/badge/TestPyPI-Testing-blue)](https://test.pypi.org/project/rupantaran/)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![codecov](https://codecov.io/gh/biraj094/rupantaran/graph/badge.svg?token=FQRYN84524)](https://codecov.io/gh/biraj094/rupantaran)
+
 **Rupantaran** is a Python package that converts various **Nepali-specific measurements** into **SI units** or commonly used metric units.  You can read the docs [here](https://rupantaran.readthedocs.io/en/latest/).
 
 ---
@@ -12,13 +13,12 @@
 
 This package covers a range of traditional Nepalese measurement units, including:
 
-- [X] **Land**: <del>khetmuri</del>, bigha, kattha, dhur, ropani, aana, paisa, dam  
+- [X] **Land**: <del>khetmuri</del>, bigha, kattha, dhur, ropani, aana, paisa, dam , square meter  
 - [ ] **Volume**: mutthi, mana, pathi, dabba  
 - [ ] **Length**: angul, dharnugrah, dhanurmushti, vitastaa, haath, kosh, yojan  
-- [ ] **Weight**: dharni, Taul  
-- [ ] **Valuable Metals**: lari, tola, pahadi  
+- [ ] **Weight**: lal, tola, chatak, pau, dharni, sher, kg, g, lb, oz  
 
-The package ensures accurate conversions by cross-referencing multiple resources.  
+The package ensures accurate conversions by cross-referencing multiple resources. Please create an issue if you find any discrepancies in conversion maps.  
 
 ---
 
@@ -156,7 +156,7 @@ This environment is used for publishing the final package to PyPI.This is facila
   ```sh
   rm -rf dist/
   ```
-- If you face authentication issues, regenerate the **API token** from TestPyPI or PyPI and update your `~/.pypirc` file.
+- If you face authentication issues, regenerate the **API token** from TestPyPI or PyPI and update your `~/.pypirc` file. This is not relevant here, because we are using GitHub Actions to upload the package to TestPyPI and PyPI.
 
 ---
 
