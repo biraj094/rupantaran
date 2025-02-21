@@ -12,7 +12,14 @@ A simple streamlit app called [Bigha Busters](https://bigha-busters.streamlit.ap
 git clone https://github.com/biraj094/rupantaran.git
 ```
 
-2. Install the dependencies
+2. Create a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+
+3. Install the dependencies
 
 ```bash
 pip install -r requirements.txt
