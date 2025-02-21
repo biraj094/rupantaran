@@ -15,7 +15,13 @@
   <img src="rupantaran.png" alt="Rupantaran Logo" width="200" height="200">
 </p>
 
-**Rupantaran** is a Python package that converts various **Nepali-specific measurements** into **SI units** or commonly used metric units.  You can read the docs [here](https://rupantaran.readthedocs.io/en/latest/).
+**Rupantaran** is a Python package that converts various **Nepali-specific measurements** into **SI units** or commonly used metric units.  You can read the docs [here](https://rupantaran.readthedocs.io/en/latest/). 
+
+---
+
+## Example Project 
+
+A simple streamlit app called [Bigha Busters](https://bigha-busters.streamlit.app/) is built using this package. The source code for the project is [here](https://github.com/biraj094/rupantaran/tree/main/example-streamlit-app). Please feel free to create your own app using this package. You can share them by creating an issue [here](https://github.com/biraj094/rupantaran/issues).
 
 ---
 
