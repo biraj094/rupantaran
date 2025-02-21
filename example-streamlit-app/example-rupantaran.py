@@ -2,24 +2,24 @@ import streamlit as st
 import math
 from rupantaran.land import terai
 from rupantaran.land import hilly
-
+https://github.com/biraj094/rupantaran/blob/main/example-streamlit-app/static/baseball.jpeg?raw=true
 ###############################################################################
 # Constants
 ###############################################################################
 # Reference areas with name, area in square meters, and image URLs
 REFERENCE_AREAS = {
-    "Football Field": {"area": 7140, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/football-field.jpeg"},
-    "Cricket Ground": {"area": 15000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/cricket.jpeg"},
-    "Basketball Court": {"area": 420, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/basketball-court.jpeg"},
-    "Tennis Court": {"area": 260, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/tennis-court.jpeg"},
-    "Olympic Swimming Pool": {"area": 1250, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/swimming-pool.jpeg"},
-    "Baseball Field": {"area": 10000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/baseball.jpeg"},
-    "Volleyball Court": {"area": 162, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/volleyball.jpeg"},
-    "Taj Mahal (entire complex)": {"area": 170000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/taj-mahal.jpeg"},
-    "Eiffel Tower (base footprint)": {"area": 15625, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/eiffel-tower.jpeg"},
-    "Central Park (NYC)": {"area": 3410000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/central-park.jpeg"},
-    "Great Pyramid of Giza (base)": {"area": 53000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/pyramid.jpeg"},
-    "Boeing 747 (bounding rectangle)": {"area": 5168, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/static/boeing.jpeg"}
+    "Football Field": {"area": 7140, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/football-field.jpeg?raw=true"},
+    "Cricket Ground": {"area": 15000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/cricket.jpeg?raw=true"},
+    "Basketball Court": {"area": 420, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/basketball-court.jpeg?raw=true"},
+    "Tennis Court": {"area": 260, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/tennis-court.jpeg?raw=true"},
+    "Olympic Swimming Pool": {"area": 1250, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/swimming-pool.jpeg?raw=true"},
+    "Baseball Field": {"area": 10000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/baseball.jpeg?raw=true"},  
+    "Volleyball Court": {"area": 162, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/volleyball.jpeg?raw=true"},
+    "Taj Mahal (entire complex)": {"area": 170000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/taj-mahal.jpeg?raw=true"},
+    "Eiffel Tower (base footprint)": {"area": 15625, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/eiffel-tower.jpeg?raw=true"},
+    "Central Park (NYC)": {"area": 3410000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/central-park.jpeg?raw=true"},
+    "Great Pyramid of Giza (base)": {"area": 53000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/pyramid.jpeg?raw=true"},
+    "Boeing 747 (bounding rectangle)": {"area": 5168, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/boeing.jpeg?raw=true"}
 }
 ###############################################################################
 # Streamlit Page Configuration
