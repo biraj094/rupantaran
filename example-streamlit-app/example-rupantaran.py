@@ -2,24 +2,67 @@ import streamlit as st
 import math
 from rupantaran.land import terai
 from rupantaran.land import hilly
-https://github.com/biraj094/rupantaran/blob/main/example-streamlit-app/static/baseball.jpeg?raw=true
+import os
+
 ###############################################################################
 # Constants
 ###############################################################################
+# Check if running locally
+IS_LOCAL = os.path.exists('static')
+
+# Base URL for GitHub hosted images
+GITHUB_BASE_URL = "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static"
+
 # Reference areas with name, area in square meters, and image URLs
 REFERENCE_AREAS = {
-    "Football Field": {"area": 7140, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/football-field.jpeg?raw=true"},
-    "Cricket Ground": {"area": 15000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/cricket.jpeg?raw=true"},
-    "Basketball Court": {"area": 420, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/basketball-court.jpeg?raw=true"},
-    "Tennis Court": {"area": 260, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/tennis-court.jpeg?raw=true"},
-    "Olympic Swimming Pool": {"area": 1250, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/swimming-pool.jpeg?raw=true"},
-    "Baseball Field": {"area": 10000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/baseball.jpeg?raw=true"},  
-    "Volleyball Court": {"area": 162, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/volleyball.jpeg?raw=true"},
-    "Taj Mahal (entire complex)": {"area": 170000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/taj-mahal.jpeg?raw=true"},
-    "Eiffel Tower (base footprint)": {"area": 15625, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/eiffel-tower.jpeg?raw=true"},
-    "Central Park (NYC)": {"area": 3410000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/central-park.jpeg?raw=true"},
-    "Great Pyramid of Giza (base)": {"area": 53000, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/pyramid.jpeg?raw=true"},
-    "Boeing 747 (bounding rectangle)": {"area": 5168, "image": "https://raw.githubusercontent.com/biraj094/rupantaran/main/example-streamlit-app/static/boeing.jpeg?raw=true"}
+    "Football Field": {
+        "area": 7140, 
+        "image": "static/football-field.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/football-field.jpeg"
+    },
+    "Cricket Ground": {
+        "area": 15000, 
+        "image": "static/cricket.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/cricket.jpeg"
+    },
+    "Basketball Court": {
+        "area": 420, 
+        "image": "static/basketball-court.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/basketball-court.jpeg"
+    },
+    "Tennis Court": {
+        "area": 260, 
+        "image": "static/tennis-court.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/tennis-court.jpeg"
+    },
+    "Olympic Swimming Pool": {
+        "area": 1250, 
+        "image": "static/swimming-pool.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/swimming-pool.jpeg"
+    },
+    "Baseball Field": {
+        "area": 10000, 
+        "image": "static/baseball.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/baseball.jpeg"
+    },
+    "Volleyball Court": {
+        "area": 162, 
+        "image": "static/volleyball.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/volleyball.jpeg"
+    },
+    "Taj Mahal (entire complex)": {
+        "area": 170000, 
+        "image": "static/taj-mahal.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/taj-mahal.jpeg"
+    },
+    "Eiffel Tower (base footprint)": {
+        "area": 15625, 
+        "image": "static/eiffel-tower.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/eiffel-tower.jpeg"
+    },
+    "Central Park (NYC)": {
+        "area": 3410000, 
+        "image": "static/central-park.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/central-park.jpeg"
+    },
+    "Great Pyramid of Giza (base)": {
+        "area": 53000, 
+        "image": "static/pyramid.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/pyramid.jpeg"
+    },
+    "Boeing 747 (bounding rectangle)": {
+        "area": 5168, 
+        "image": "static/boeing.jpeg" if IS_LOCAL else f"{GITHUB_BASE_URL}/boeing.jpeg"
+    }
 }
 ###############################################################################
 # Streamlit Page Configuration
